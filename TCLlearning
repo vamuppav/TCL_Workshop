@@ -1,0 +1,65 @@
+#!/bin/tcsh -f
+echo 
+echo 
+echo "********************************     ***********************      ********"
+echo "********************************     ***********************      ********"
+echo "********************************     ***********************      ********"
+echo "           ********                  *******                      ********"
+echo "           ********                  *******                      ********"
+echo "           ********                  *******                      ********"
+echo "           ********                  *******                      ********"
+echo "           ********                  *******                      ********"
+echo "           ********                  *******                      ********"
+echo "           ********                  *******                      ********"
+echo "           ********                  *******                      ********"
+echo "           ********                  *******                      ********"
+echo "           ********                  *******                      ********"
+echo "           ********                  *******                      ********"
+echo "           ********                  *******                      ********"
+echo "           ********                  **********************       ****************************"
+echo "           ********                  **********************       ****************************"
+echo "           ********                  **********************       ****************************"
+echo ""
+echo "" 
+echo "          This is created to understand and learn tcl scripting by Akhil Muppavarapu"
+echo 
+
+set my_work_dir = `pwd`
+
+#..............................................................#
+#...................... Tool Initilization.....................#
+#..............................................................#
+
+if ($#argv != 1) then 
+         echo "INFO:please provide the csv file"
+         exit 1
+endif
+
+if (! -f $argv[1] || $argv[1] == "-help") then 
+ 
+        if ($argv[1] != "-help") then 
+	        echo "Error : Cannot Find the csv file $argv[1]. Exiting ...."
+		exit 1
+	else
+                echo               Correct formate: ./file name \<csv file\>   :: Ex: ./TCLlearning excle.sv
+                echo               where \<csv file \>  consists of 2 coloumns, below keyword being in 1st column and is case Sensitive. 
+                echo               \<Design Name\> is the name of the top level module
+                echo               \<Ourtput Directory\> is the name of the output Directory where you want to dump synthesis script, Synthesized netlist and timing reports.
+                echo               \<Netlist Directory\> is the name of directory where all the RTL nestlist are present
+                echo               \<Early Library Path\> is the file path pf the early cell library to used for STA
+                echo               \<Late Library Path\> is the file path of the late cell library
+                echo               \<Constrain file\> is the csv file PATH OF CONSTRAINS  to be used for STA
+                echo 
+                exit 1
+	endif
+else 
+	tclsh TCLlearning.tcl $argv[1]
+
+
+endif
+
+
+
+
+
+

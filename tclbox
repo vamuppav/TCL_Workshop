@@ -1,0 +1,62 @@
+#!/bin/tcsh -f
+
+echo 
+echo 
+echo 
+echo "     *************************************       **************************       *********" 
+echo "     *************************************       **************************       *********"
+echo "     *************************************       **************************       *********"
+echo "                  *********                      **********                       *********"
+echo "                  *********                      **********                       *********"
+echo "                  *********                      **********                       *********"
+echo "                  *********                      **********                       *********"
+echo "                  *********                      **********                       *********"
+echo "                  *********                      **********                       *********"
+echo "                  *********                      **********                       *********"
+echo "                  *********                      **********                       *********"
+echo "                  *********                      **********                       *********"
+echo "                  *********                      **********                       *********"
+echo "                  *********                      **********                       *********"
+echo "                  *********                      **********                       *********"
+echo "                  *********                      *************************        ******************************"
+echo "                  *********                      *************************        ******************************"
+echo "                  *********                      *************************        ******************************"
+echo ""
+echo ""
+echo              "    This is created to Learn and execute Tcl Scripting By Akhil Muppavarapu "
+echo
+echo
+
+
+set my_work_dir = `pwd`
+
+#........................................Tool initilization .............................................#
+
+
+if ($#argv != 1) then
+       echo "Info : Please provide the csv file"
+       exit 1
+
+       endif
+if (! -f $argv[1] || $argv[1] == "-help" ) then
+	if ( $argv[1] != "-help") then
+		echo  "Error: Cannot find Csv File $argv[1]. Exiting ...."
+		exit 1
+	else
+		echo         Usage: ./tclbox \<csv file\>
+		echo         where \<csv file\> consists of 2 columns, below keyword beging in 1st colunm and its case sensitive.
+		echo         \<Design Name\> is the name of top level module
+		echo         \<Output Directory\> is the name of output directory where you want to dump the synthesis script, synthesize nestlist and timimg reports         
+		echo         \<Netlist Directory\> is the name of directory twhere all the RTL nestlist are present
+		echo         \<Early Library Path\> is the file path of the early cell library to be used for STA
+		echo         \<Late Library Path\> is the file path of the late cell library to be used for STA
+		echo         \<Constraints file\> is csv file path of constrians to be used for STA
+                exit 1
+	endif
+else 
+	tclsh tclbox.tcl $argv[1]
+endif
+
+
+
+
